@@ -17,26 +17,29 @@ public class UserService implements IUserService {
     public void initData() {
         users = new HashMap<>();
 
-        User newUser = new User();
-        newUser.setId(BigInteger.valueOf(1));
-        newUser.setName("Ollie");
-        newUser.setSurname("Blake");
-        users.put(newUser.getId().intValue(), newUser);
+        User ollie = new User();
+        ollie.setId(BigInteger.valueOf(1));
+        ollie.setName("Ollie");
+        ollie.setSurname("Blake");
+        users.put(ollie.getId().intValue(), ollie);
 
-        newUser.setId(BigInteger.valueOf(2));
-        newUser.setName("Doris");
-        newUser.setSurname("Barker");
-        users.put(newUser.getId().intValue(), newUser);
+        User doris = new User();
+        doris.setId(BigInteger.valueOf(2));
+        doris.setName("Doris");
+        doris.setSurname("Barker");
+        users.put(doris.getId().intValue(), doris);
 
-        newUser.setId(BigInteger.valueOf(3));
-        newUser.setName("Daryl");
-        newUser.setSurname("Taylor");
-        users.put(newUser.getId().intValue(), newUser);
+        User daryl = new User();
+        daryl.setId(BigInteger.valueOf(3));
+        daryl.setName("Daryl");
+        daryl.setSurname("Taylor");
+        users.put(daryl.getId().intValue(), daryl);
 
-        newUser.setId(BigInteger.valueOf(4));
-        newUser.setName("Melanie");
-        newUser.setSurname("Bowen");
-        users.put(newUser.getId().intValue(), newUser);
+        User melanie = new User();
+        melanie.setId(BigInteger.valueOf(4));
+        melanie.setName("Melanie");
+        melanie.setSurname("Bowen");
+        users.put(melanie.getId().intValue(), melanie);
     }
 
     @Override
