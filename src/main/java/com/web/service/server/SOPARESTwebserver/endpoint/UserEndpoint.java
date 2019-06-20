@@ -1,5 +1,6 @@
 package com.web.service.server.SOPARESTwebserver.endpoint;
 
+import com.web.service.server.SOPARESTwebserver.service.IUserService;
 import com.web.service.server.SOPARESTwebserver.service.UserService;
 import com.webservice.soap.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,32 +14,32 @@ public class UserEndpoint {
 
     private final String NAMESPACE = "http://webservice.com/soap";
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @PayloadRoot(namespace = NAMESPACE,
             localPart = "createUserRequest")
     @ResponsePayload
-    public CreateUserResponse createUser(@RequestPayload CreateUserRequest request) {
-        CreateUserResponse response = new CreateUserResponse();
-        response.setStatus(userService.createUser(request.getUser()));
+    public CRUUserResponse createUser(@RequestPayload CreateUserRequest request) {
+        CRUUserResponse response = new CRUUserResponse();
+        response.setUser(userService.createUser(request.getUser()));
         return response;
     }
 
     @PayloadRoot(namespace = NAMESPACE,
             localPart = "readUserRequest")
     @ResponsePayload
-    public ReadUserResponse readUser(@RequestPayload ReadUserRequest request) {
-        ReadUserResponse response = new ReadUserResponse();
-        response.setUser(userService.readUser(request.getId().intValue()));
+    public CRUUserResponse readUser(@RequestPayload ReadUserRequest request) {
+        CRUUserResponse response = new CRUUserResponse();
+        response.setUser(userService.readUser(request.getId()));
         return response;
     }
 
     @PayloadRoot(namespace = NAMESPACE,
             localPart = "updateUserRequest")
     @ResponsePayload
-    public UpdateUserResponse updateUser(@RequestPayload UpdateUserRequest request) {
-        UpdateUserResponse response = new UpdateUserResponse();
-        response.setStatus(userService.updateUser(request.getUser()));
+    public CRUUserResponse updateUser(@RequestPayload UpdateUserRequest request) {
+        CRUUserResponse response = new CRUUserResponse();
+        response.setUser(userService.updateUser(request.getUser()));
         return response;
     }
 
@@ -47,7 +48,7 @@ public class UserEndpoint {
     @ResponsePayload
     public DeleteUserResponse deleteUser(@RequestPayload DeleteUserRequest request) {
         DeleteUserResponse response = new DeleteUserResponse();
-        response.setStatus(userService.deleteUser(request.getId().intValue()));
+        response.setStatus(userService.deleteUser(request.getId()));
         return response;
     }
 

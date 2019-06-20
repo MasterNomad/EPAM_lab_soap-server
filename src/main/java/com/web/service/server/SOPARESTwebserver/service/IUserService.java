@@ -4,8 +4,8 @@ import com.webservice.soap.User;
 
 public interface IUserService {
 
-    boolean createUser (User user);
+    User createUser (User user);
     User readUser (int id);
-    boolean updateUser (User user);
+    User updateUser (User user);
     boolean deleteUser (int id);
 }

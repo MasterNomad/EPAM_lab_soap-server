@@ -12,26 +12,10 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="createUserResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="status" type="xs:boolean"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
     <xs:element name="readUserRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:integer"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="readUserResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="User" type="tns:User"/>
+                <xs:element name="id" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -44,10 +28,10 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="updateUserResponse">
+    <xs:element name="CRUUserResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="status" type="xs:boolean"/>
+                <xs:element name="User" type="tns:User"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -55,7 +39,7 @@
     <xs:element name="deleteUserRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:integer"/>
+                <xs:element name="id" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -70,7 +54,7 @@
 
     <xs:complexType name="User">
         <xs:sequence>
-            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="id" type="xs:int"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="surname" type="xs:string"/>
     </xs:sequence>

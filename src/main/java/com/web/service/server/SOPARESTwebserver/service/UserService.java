@@ -4,7 +4,6 @@ import com.webservice.soap.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,38 +17,38 @@ public class UserService implements IUserService {
         users = new HashMap<>();
 
         User ollie = new User();
-        ollie.setId(BigInteger.valueOf(1));
+        ollie.setId(1);
         ollie.setName("Ollie");
         ollie.setSurname("Blake");
-        users.put(ollie.getId().intValue(), ollie);
+        users.put(ollie.getId(), ollie);
 
         User doris = new User();
-        doris.setId(BigInteger.valueOf(2));
+        doris.setId(2);
         doris.setName("Doris");
         doris.setSurname("Barker");
-        users.put(doris.getId().intValue(), doris);
+        users.put(doris.getId(), doris);
 
         User daryl = new User();
-        daryl.setId(BigInteger.valueOf(3));
+        daryl.setId(3);
         daryl.setName("Daryl");
         daryl.setSurname("Taylor");
-        users.put(daryl.getId().intValue(), daryl);
+        users.put(daryl.getId(), daryl);
 
         User melanie = new User();
-        melanie.setId(BigInteger.valueOf(4));
+        melanie.setId(4);
         melanie.setName("Melanie");
         melanie.setSurname("Bowen");
-        users.put(melanie.getId().intValue(), melanie);
+        users.put(melanie.getId(), melanie);
     }
 
     @Override
-    public boolean createUser(User user) {
+    public User createUser(User user) {
         try {
-            users.put(user.getId().intValue(), user);
+            users.put(user.getId(), user);
         } catch (Exception e) {
-            return false;
+            return null;
         }
-        return true;
+        return user;
     }
 
     @Override
@@ -58,12 +57,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean updateUser(User user) {
-        if (users.containsKey(user.getId().intValue())){
-            users.put(user.getId().intValue(), user);
-            return true;
+    public User updateUser(User user) {
+        if (users.containsKey(user.getId())){
+            users.put(user.getId(), user);
+            return user;
         }
-        return false;
+        return null;
     }
 
     @Override
