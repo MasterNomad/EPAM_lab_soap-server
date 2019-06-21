@@ -58,16 +58,12 @@ public class UserService implements IUserService {
 
     @Override
     public User updateUser(User user) {
-        if (users.containsKey(user.getId())){
-            users.put(user.getId(), user);
-            return user;
-        }
-        return null;
+        return users.replace(user.getId(), user);
     }
 
     @Override
     public boolean deleteUser(int id) {
-        if (users.containsKey(id)){
+        if (users.containsKey(id)) {
             users.remove(id);
             return true;
         }
