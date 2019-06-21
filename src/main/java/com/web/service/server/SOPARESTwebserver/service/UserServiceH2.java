@@ -26,7 +26,8 @@ public class UserServiceH2 implements IUserService {
         doris.setSurname("Barker");
         userRepository.save(doris);
 
-        JPAUser daryl = new JPAUser();;
+        JPAUser daryl = new JPAUser();
+        ;
         daryl.setName("Daryl");
         daryl.setSurname("Taylor");
         userRepository.save(daryl);

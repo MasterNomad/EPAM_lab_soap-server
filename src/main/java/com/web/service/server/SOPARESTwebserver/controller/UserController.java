@@ -14,7 +14,6 @@ public class UserController implements IUserService {
     @Override
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
-        System.out.println(user.getName());
         return userService.createUser(user);
     }
 
