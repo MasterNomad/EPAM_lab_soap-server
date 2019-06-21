@@ -4,15 +4,16 @@ import com.webservice.soap.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlElement;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
+@ToString
 public class JPAUser extends User {
 
     @Id
@@ -21,11 +22,9 @@ public class JPAUser extends User {
     protected int id;
 
     @Column(name = "name", length = 64, nullable = false)
-    @XmlElement(required = true)
     protected String name;
 
     @Column(name = "surname", length = 64, nullable = false)
-    @XmlElement(required = true)
     protected String surname;
 
     public JPAUser(User user) {

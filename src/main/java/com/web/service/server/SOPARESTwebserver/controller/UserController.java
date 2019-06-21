@@ -3,12 +3,14 @@ package com.web.service.server.SOPARESTwebserver.controller;
 import com.web.service.server.SOPARESTwebserver.service.IUserService;
 import com.webservice.soap.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController implements IUserService {
 
     @Autowired
+    @Qualifier("userServiceH2")
     private IUserService userService;
 
     @Override

@@ -17,7 +17,7 @@ public class UserServiceH2 implements IUserService {
     @PostConstruct
     public void initData() {
         JPAUser ollie = new JPAUser();
-        ollie.setName("Ollie");
+        ollie.setName("Anton");
         ollie.setSurname("Blake");
         userRepository.save(ollie);
 
@@ -46,7 +46,12 @@ public class UserServiceH2 implements IUserService {
 
     @Override
     public User readUser(int id) {
-        return userRepository.findById(id).orElse(null);
+        JPAUser jpaUser = userRepository.findById(id).orElse(null);
+        User user = new User();
+        user.setId(jpaUser.getId());
+        user.setName(jpaUser.getName());
+        user.setSurname(jpaUser.getSurname());
+        return user;
     }
 
     @Override
