@@ -2,6 +2,7 @@ package com.web.service.server.SOPARESTwebserver.service;
 
 import com.web.service.server.SOPARESTwebserver.dto.JPAUser;
 import com.web.service.server.SOPARESTwebserver.repository.IUserRepository;
+import com.web.service.server.SOPARESTwebserver.utils.UserMapper;
 import com.webservice.soap.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class UserServiceH2 implements IUserService {
         userRepository.save(doris);
 
         JPAUser daryl = new JPAUser();
-        ;
         daryl.setName("Daryl");
         daryl.setSurname("Taylor");
         userRepository.save(daryl);
@@ -41,16 +41,17 @@ public class UserServiceH2 implements IUserService {
     @Override
     public User createUser(User user) {
         JPAUser jpaUser = new JPAUser(user);
-        return userRepository.save(jpaUser);
+        userRepository.save(jpaUser);
+        return user;
     }
 
     @Override
     public User readUser(int id) {
         JPAUser jpaUser = userRepository.findById(id).orElse(null);
         User user = new User();
-        user.setId(jpaUser.getId());
-        user.setName(jpaUser.getName());
-        user.setSurname(jpaUser.getSurname());
+        if (jpaUser != null) {
+            UserMapper.mapUser(user, jpaUser);
+        }
         return user;
     }
 
@@ -58,7 +59,8 @@ public class UserServiceH2 implements IUserService {
     public User updateUser(User user) {
         JPAUser jpaUser = new JPAUser(user);
         if (userRepository.existsById(jpaUser.getId())) {
-            return userRepository.save(jpaUser);
+            userRepository.save(jpaUser);
+            return user;
         }
         return null;
     }
